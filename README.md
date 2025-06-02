@@ -56,7 +56,13 @@ SECRET_KEY=your-secret-key
 ### 6. Run the project
 
 ```bash
-go run main.go
+go run .
+```
+
+or with air
+
+```bash
+air
 ```
 
 

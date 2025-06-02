@@ -1,0 +1,30 @@
+[
+  {
+    "id": "Error",
+    "translation": "Error"
+  },
+  {
+    "id": "UsersList",
+    "translation": "User List"
+  },
+  {
+    "id": "DatabaseConnectionSuccess",
+    "translation": "Database connected successfully and models migrated."
+  },
+  {
+    "id": "DatabaseConnectionError",
+    "translation": "Failed to connect to the database"
+  },
+  {
+    "id": "DatabaseMigrationError",
+    "translation": "Model migration failed"
+  },
+  {
+    "id": "DotenvLoadError",
+    "translation": "Failed to load env file"
+  },
+  {
+    "id": "CreateUserSuccess",
+    "translation": "User created successfully."
+  }
+]

@@ -1,0 +1,30 @@
+[
+  {
+    "id": "Error",
+    "translation": "خطا"
+  },
+  {
+    "id": "UsersList",
+    "translation": "لیست کاربران"
+  },
+  {
+    "id": "DatabaseConnectionSuccess",
+    "translation": "اتصال به دیتابیس برقرار شد و مدل‌ها مایگریت شدند."
+  },
+  {
+    "id": "DatabaseConnectionError",
+    "translation": "اتصال به دیتابیس برقرار نشد"
+  },
+  {
+    "id": "DatabaseMigrationError",
+    "translation": "مایگریت مدل‌ها انجام نشد"
+  },
+  {
+    "id": "DotenvLoadError",
+    "translation": "بارگذاری فایل env با خطا مواجه شد"
+  },
+  {
+    "id": "CreateUserSuccess",
+    "translation": "ثبت کاربر با موفقیت انجام شد"
+  }
+]

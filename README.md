@@ -64,11 +64,11 @@ or with air
 ```bash
 air
 ```
+---
 
 
 ### CLI Command:
 
----
 create controller:
 
 ```bash

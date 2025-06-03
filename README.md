@@ -66,6 +66,37 @@ air
 ```
 
 
+### CLI Command:
+
+---
+create controller:
+
+```bash
+go run cmd/forge.go make:controller test_controller
+```
+---
+
+create model:
+
+```bash
+go run cmd/forge.go make:model test_model
+```
+---
+
+create middleware:
+
+```bash
+go run cmd/forge.go make:middleware test_middleware
+```
+---
+
+create validator:
+
+```bash
+go run cmd/forge.go make:validator test_validator
+```
+---
+
 ### 🌍 Internationalization (i18n)
 This project supports multi-language output using go-i18n.
 

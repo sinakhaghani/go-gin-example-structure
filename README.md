@@ -53,7 +53,7 @@ SECRET_KEY=your-secret-key
 
 ```
 
-###6. Migrate
+### 6. Migrate
 
 ```bash
 migrate -path database/migrations -database "mysql://user:pass@tcp(localhost:3306)/dbname" up

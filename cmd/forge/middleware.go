@@ -3,15 +3,17 @@ package forge
 import (
 	"fmt"
 	"os"
+	"path/filepath"
 	"text/template"
 )
 
 func MakeMiddleware(name string) {
 	dir := "src/middlewares"
 	filePath := fmt.Sprintf("%s/%s.go", dir, name)
+	fullDir := filepath.Dir(filePath)
 
-	if _, err := os.Stat(dir); os.IsNotExist(err) {
-		os.MkdirAll(dir, os.ModePerm)
+	if _, err := os.Stat(fullDir); os.IsNotExist(err) {
+		os.MkdirAll(fullDir, os.ModePerm)
 	}
 
 	if _, err := os.Stat(filePath); err == nil {

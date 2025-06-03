@@ -4,7 +4,7 @@ import (
 	"github.com/gin-gonic/gin"
 	"github.com/nicksnyder/go-i18n/v2/i18n"
 	"go-gin-example-structure/config"
-	"go-gin-example-structure/database/models"
+	"go-gin-example-structure/src/models"
 	"go-gin-example-structure/src/validators"
 	"golang.org/x/crypto/bcrypt"
 	"net/http"

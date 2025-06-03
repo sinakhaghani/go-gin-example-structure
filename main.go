@@ -3,8 +3,8 @@ package main
 import (
 	"github.com/gin-gonic/gin"
 	"go-gin-example-structure/config"
-	"go-gin-example-structure/database/models"
 	"go-gin-example-structure/routes"
+	"go-gin-example-structure/src/models"
 	"log"
 )
 

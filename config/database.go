@@ -2,11 +2,11 @@ package config
 
 import (
 	"fmt"
+	"go-gin-example-structure/src/models"
 	"log"
 	"os"
 
 	"github.com/joho/godotenv"
-	"go-gin-example-structure/database/models"
 	"gorm.io/driver/mysql"
 	"gorm.io/gorm"
 )

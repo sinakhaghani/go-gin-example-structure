@@ -7,7 +7,7 @@ import (
 )
 
 func MakeModel(name string) {
-	dir := "database/models"
+	dir := "src/models"
 	filePath := fmt.Sprintf("%s/%s.go", dir, name)
 
 	if _, err := os.Stat(dir); os.IsNotExist(err) {

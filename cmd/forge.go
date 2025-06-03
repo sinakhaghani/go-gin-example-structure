@@ -24,6 +24,9 @@ func main() {
 		forge.MakeValidator(name)
 	case "make:model":
 		forge.MakeModel(name)
+	case "make:migration":
+		forge.MakeMigration(name)
+
 	default:
 		fmt.Printf("Unknown command: %s\n", command)
 	}

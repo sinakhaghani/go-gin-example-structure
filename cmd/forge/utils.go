@@ -1,6 +1,8 @@
 package forge
 
-import "strings"
+import (
+	"strings"
+)
 
 // ToCamelCase converts snake_case to CamelCase
 func ToCamelCase(input string) string {

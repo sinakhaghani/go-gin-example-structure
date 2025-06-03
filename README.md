@@ -53,7 +53,13 @@ SECRET_KEY=your-secret-key
 
 ```
 
-### 6. Run the project
+###6. Migrate
+
+```bash
+migrate -path database/migrations -database "mysql://user:pass@tcp(localhost:3306)/dbname" up
+```
+
+### 7. Run the project
 
 ```bash
 go run .
@@ -72,28 +78,35 @@ air
 create controller:
 
 ```bash
-go run cmd/forge.go make:controller test_controller
+go run cmd/forge.go make:controller user_controller
 ```
 ---
 
 create model:
 
 ```bash
-go run cmd/forge.go make:model test_model
+go run cmd/forge.go make:model user_model
+```
+---
+
+create migration:
+
+```bash
+go run cmd/forge.go make:migration create_user_table
 ```
 ---
 
 create middleware:
 
 ```bash
-go run cmd/forge.go make:middleware test_middleware
+go run cmd/forge.go make:middleware user_middleware
 ```
 ---
 
 create validator:
 
 ```bash
-go run cmd/forge.go make:validator test_validator
+go run cmd/forge.go make:validator user_validator
 ```
 ---
 

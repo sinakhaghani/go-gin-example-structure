@@ -7,9 +7,9 @@ import (
 	"text/template"
 )
 
-func MakeMiddleware(name string) {
+func MakeMiddleware(path string) {
 	dir := "src/middlewares"
-	filePath := fmt.Sprintf("%s/%s.go", dir, name)
+	filePath := fmt.Sprintf("%s/%s.go", dir, path)
 	fullDir := filepath.Dir(filePath)
 
 	if _, err := os.Stat(fullDir); os.IsNotExist(err) {
@@ -20,6 +20,8 @@ func MakeMiddleware(name string) {
 		fmt.Println("Middlewares already exists.")
 		return
 	}
+
+	fileName := filepath.Base(path)
 
 	tmpl := `package middlewares
 
@@ -42,7 +44,7 @@ func MakeMiddleware(name string) {
 
 	t := template.Must(template.New("middleware").Parse(tmpl))
 	t.Execute(f, map[string]string{
-		"FuncName": ToCamelCase(name),
+		"FuncName": ToCamelCase(fileName),
 	})
 
 	fmt.Println("middleware created:", filePath)

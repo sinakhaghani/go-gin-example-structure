@@ -7,9 +7,9 @@ import (
 	"text/template"
 )
 
-func MakeValidator(name string) {
+func MakeValidator(path string) {
 	dir := "src/validators"
-	filePath := fmt.Sprintf("%s/%s.go", dir, name)
+	filePath := fmt.Sprintf("%s/%s.go", dir, path)
 	fullDir := filepath.Dir(filePath)
 
 	if _, err := os.Stat(fullDir); os.IsNotExist(err) {
@@ -21,6 +21,8 @@ func MakeValidator(name string) {
 		return
 	}
 
+	fileName := filepath.Base(path)
+
 	tmpl := `package validators
 
 
@@ -31,7 +33,7 @@ type ExampleInput struct {}`
 
 	t := template.Must(template.New("validator").Parse(tmpl))
 	t.Execute(f, map[string]string{
-		"FuncName": ToCamelCase(name),
+		"FuncName": ToCamelCase(fileName),
 	})
 
 	fmt.Println("validator created:", filePath)

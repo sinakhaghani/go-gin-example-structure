@@ -4,12 +4,13 @@ import (
 	"fmt"
 	"os"
 	"path/filepath"
+
 	"text/template"
 )
 
-func MakeController(name string) {
+func MakeController(path string) {
 	dir := "src/controllers"
-	filePath := fmt.Sprintf("%s/%s.go", dir, name)
+	filePath := fmt.Sprintf("%s/%s.go", dir, path)
 	fullDir := filepath.Dir(filePath)
 
 	if _, err := os.Stat(fullDir); os.IsNotExist(err) {
@@ -20,6 +21,8 @@ func MakeController(name string) {
 		fmt.Println("Controller already exists.")
 		return
 	}
+
+	fileName := filepath.Base(path)
 
 	tmpl := `package controllers
 
@@ -39,7 +42,7 @@ func MakeController(name string) {
 
 	t := template.Must(template.New("controller").Parse(tmpl))
 	t.Execute(f, map[string]string{
-		"FuncName": ToCamelCase(name),
+		"FuncName": ToCamelCase(fileName),
 	})
 
 	fmt.Println("Controller created:", filePath)

@@ -7,9 +7,9 @@ import (
 	"text/template"
 )
 
-func MakeModel(name string) {
+func MakeModel(path string) {
 	dir := "src/models"
-	filePath := fmt.Sprintf("%s/%s.go", dir, name)
+	filePath := fmt.Sprintf("%s/%s.go", dir, path)
 	fullDir := filepath.Dir(filePath)
 
 	if _, err := os.Stat(fullDir); os.IsNotExist(err) {
@@ -21,6 +21,8 @@ func MakeModel(name string) {
 		return
 	}
 
+	fileName := filepath.Base(path)
+
 	tmpl := `package models
 
 
@@ -31,7 +33,7 @@ type ExampleModel struct {}`
 
 	t := template.Must(template.New("model").Parse(tmpl))
 	t.Execute(f, map[string]string{
-		"FuncName": ToCamelCase(name),
+		"FuncName": ToCamelCase(fileName),
 	})
 
 	fmt.Println("model created:", filePath)

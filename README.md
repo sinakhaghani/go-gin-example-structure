@@ -73,7 +73,7 @@ air
 ---
 
 
-### CLI Command:
+### CLI Commands:
 
 create controller:
 

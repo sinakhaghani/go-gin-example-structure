@@ -1,8 +1,8 @@
 package models
 
 type User struct {
-	ID       uint   `json:"id"`
-	Name     string `json:"name"`
-	Email    string `json:"email" gorm:"unique"`
-	Password string `json:"-"` // Password is not displayed in JSON output.
+	ID       int    `gorm:"primaryKey"`
+	Name     string `gorm:"column:name"`
+	Email    string `gorm:"unique"`
+	Password string // Password is not displayed in JSON output.
 }

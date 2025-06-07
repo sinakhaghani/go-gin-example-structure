@@ -2,7 +2,6 @@ package config
 
 import (
 	"fmt"
-	"go-gin-example-structure/src/models"
 	"log"
 	"os"
 
@@ -34,10 +33,11 @@ func InitDatabase() {
 		log.Fatal("❌ ", GetMessage("DatabaseConnectionError")+":", err)
 	}
 
-	err = DB.AutoMigrate(&models.User{})
+	// Auto migration
+	/*err = DB.AutoMigrate(&models.User{})
 	if err != nil {
 		log.Fatal("❌ ", GetMessage("DatabaseMigrationError")+":", err)
-	}
+	}*/
 
 	log.Println("✅", GetMessage("DatabaseConnectionSuccess"))
 }

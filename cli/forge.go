@@ -2,7 +2,7 @@ package main
 
 import (
 	"fmt"
-	"go-gin-example-structure/cmd/forge"
+	"go-gin-example-structure/cli/forge"
 	"os"
 )
 

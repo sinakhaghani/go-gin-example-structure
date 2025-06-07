@@ -78,35 +78,35 @@ air
 create controller:
 
 ```bash
-go run cmd/forge.go make:controller user_controller
+go run cli/forge.go make:controller user_controller
 ```
 ---
 
 create model:
 
 ```bash
-go run cmd/forge.go make:model user_model
+go run cli/forge.go make:model user_model
 ```
 ---
 
 create migration:
 
 ```bash
-go run cmd/forge.go make:migration create_user_table
+go run cli/forge.go make:migration create_user_table
 ```
 ---
 
 create middleware:
 
 ```bash
-go run cmd/forge.go make:middleware user_middleware
+go run cli/forge.go make:middleware user_middleware
 ```
 ---
 
 create validator:
 
 ```bash
-go run cmd/forge.go make:validator user_validator
+go run cli/forge.go make:validator user_validator
 ```
 ---
 

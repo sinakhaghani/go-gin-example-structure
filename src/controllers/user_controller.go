@@ -2,8 +2,9 @@ package controllers
 
 import (
 	"github.com/gin-gonic/gin"
-	"github.com/nicksnyder/go-i18n/v2/i18n"
+
 	"go-gin-example-structure/config"
+	"go-gin-example-structure/src/common/utils/i18n"
 	"go-gin-example-structure/src/models"
 	"go-gin-example-structure/src/validators"
 	"golang.org/x/crypto/bcrypt"
@@ -22,12 +23,6 @@ func Example(c *gin.Context) {
 get user from database
 */
 func GetUsers(c *gin.Context) {
-	localizerAny, exists := c.Get("localizer")
-	if !exists {
-		c.JSON(http.StatusInternalServerError, gin.H{"error": "localizer not set"})
-		return
-	}
-	localizer := localizerAny.(*i18n.Localizer)
 
 	//get users
 	var users []models.User
@@ -36,28 +31,15 @@ func GetUsers(c *gin.Context) {
 		return
 	}
 
-	//message
-	msg, err := localizer.Localize(&i18n.LocalizeConfig{
-		MessageID: "UsersList",
-	})
-	if err != nil {
-		msg = "Users list" // fallback
-	}
+	message := i18n.Translate(c, "UsersList", "User list") // from translation src/common/utils/i18n
 
 	c.JSON(http.StatusOK, gin.H{
-		"message": msg,
+		"message": message,
 		"data":    users,
 	})
 }
 
 func CreateUser(c *gin.Context) {
-
-	localizerAny, exists := c.Get("localizer")
-	if !exists {
-		c.JSON(http.StatusInternalServerError, gin.H{"error": "localizer not set"})
-		return
-	}
-	localizer := localizerAny.(*i18n.Localizer)
 
 	// src/validators/user (validation form)
 	var input validators.CreateUserInput
@@ -86,16 +68,10 @@ func CreateUser(c *gin.Context) {
 		return
 	}
 
-	//message
-	msg, err := localizer.Localize(&i18n.LocalizeConfig{
-		MessageID: "CreateUserSuccess",
-	})
-	if err != nil || msg == "" {
-		msg = "User created" // fallback message
-	}
+	message := i18n.Translate(c, "CreateUserSuccess", "User created")
 
 	c.JSON(http.StatusCreated, gin.H{
-		"message": msg,
+		"message": message,
 		"data": gin.H{
 			"id":    user.ID,
 			"name":  user.Name,

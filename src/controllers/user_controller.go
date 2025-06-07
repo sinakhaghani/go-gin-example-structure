@@ -2,14 +2,20 @@ package controllers
 
 import (
 	"github.com/gin-gonic/gin"
-
-	"go-gin-example-structure/config"
-	"go-gin-example-structure/src/common/utils/i18n"
-	"go-gin-example-structure/src/models"
 	"go-gin-example-structure/src/validators"
-	"golang.org/x/crypto/bcrypt"
+
+	"go-gin-example-structure/src/common/utils/i18n"
+	"go-gin-example-structure/src/repositories"
 	"net/http"
 )
+
+type UserController struct {
+	userRepo repositories.UserRepository
+}
+
+func NewUserController(userRepo repositories.UserRepository) *UserController {
+	return &UserController{userRepo: userRepo}
+}
 
 func Example(c *gin.Context) {
 
@@ -22,13 +28,12 @@ func Example(c *gin.Context) {
 /*
 get user from database
 */
-func GetUsers(c *gin.Context) {
+func (r *UserController) GetUsers(c *gin.Context) {
 
-	//get users
-	var users []models.User
-	if err := config.DB.Find(&users).Error; err != nil {
-		c.JSON(http.StatusInternalServerError, gin.H{"error": "database error"})
-		return
+	users, err := r.userRepo.GetAll()
+
+	if err != nil {
+		c.JSON(http.StatusOK, gin.H{"message": err.Error()})
 	}
 
 	message := i18n.Translate(c, "UsersList", "User list") // from translation src/common/utils/i18n
@@ -39,9 +44,11 @@ func GetUsers(c *gin.Context) {
 	})
 }
 
-func CreateUser(c *gin.Context) {
+/*
+create user in database
+*/
+func (r *UserController) CreateUser(c *gin.Context) {
 
-	// src/validators/user (validation form)
 	var input validators.CreateUserInput
 
 	if err := c.ShouldBindJSON(&input); err != nil {
@@ -49,22 +56,10 @@ func CreateUser(c *gin.Context) {
 		return
 	}
 
-	// Password hashing
-	hashedPassword, err := bcrypt.GenerateFromPassword([]byte(input.Password), bcrypt.DefaultCost)
+	user, err := r.userRepo.CreateUser(input)
+
 	if err != nil {
-		c.JSON(http.StatusInternalServerError, gin.H{"error": "Error in password hashing"})
-		return
-	}
-
-	user := models.User{
-		Name:     input.Name,
-		Email:    input.Email,
-		Password: string(hashedPassword),
-	}
-
-	// Save to database
-	if err := config.DB.Create(&user).Error; err != nil {
-		c.JSON(http.StatusInternalServerError, gin.H{"error": "Error saving user"})
+		c.JSON(http.StatusOK, gin.H{"message": err.Error()})
 		return
 	}
 
@@ -78,4 +73,5 @@ func CreateUser(c *gin.Context) {
 			"email": user.Email,
 		},
 	})
+
 }

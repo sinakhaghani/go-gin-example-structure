@@ -4,13 +4,13 @@ import (
 	"gorm.io/gorm"
 
 	"go-gin-example-structure/app/models"
-	"go-gin-example-structure/app/validators"
+	"go-gin-example-structure/app/validations"
 	"golang.org/x/crypto/bcrypt"
 )
 
 type UserRepository interface {
 	GetAll() ([]models.User, error)
-	CreateUser(input validators.CreateUserInput) (models.User, error)
+	CreateUser(input validations.CreateUserInput) (models.User, error)
 }
 
 type userRepository struct {
@@ -27,7 +27,7 @@ func (r *userRepository) GetAll() ([]models.User, error) {
 	return users, err
 }
 
-func (r *userRepository) CreateUser(input validators.CreateUserInput) (models.User, error) {
+func (r *userRepository) CreateUser(input validations.CreateUserInput) (models.User, error) {
 
 	// Password hashing
 	hashedPassword, err := bcrypt.GenerateFromPassword([]byte(input.Password), bcrypt.DefaultCost)

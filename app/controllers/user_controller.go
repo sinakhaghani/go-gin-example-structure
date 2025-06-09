@@ -2,7 +2,7 @@ package controllers
 
 import (
 	"github.com/gin-gonic/gin"
-	"go-gin-example-structure/app/validators"
+	"go-gin-example-structure/app/validations"
 
 	"go-gin-example-structure/app/common/utils/i18n"
 	"go-gin-example-structure/app/repositories"
@@ -49,7 +49,7 @@ create user in database
 */
 func (r *UserController) CreateUser(c *gin.Context) {
 
-	var input validators.CreateUserInput
+	var input validations.CreateUserInput
 
 	if err := c.ShouldBindJSON(&input); err != nil {
 		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})

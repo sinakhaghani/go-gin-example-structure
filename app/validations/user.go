@@ -1,4 +1,4 @@
-package validators
+package validations
 
 type CreateUserInput struct {
 	Name     string `json:"name" binding:"required"`

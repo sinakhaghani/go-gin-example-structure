@@ -20,8 +20,8 @@ func main() {
 		forge.MakeController(name)
 	case "make:middleware":
 		forge.MakeMiddleware(name)
-	case "make:validator":
-		forge.MakeValidator(name)
+	case "make:validation":
+		forge.MakeValidation(name)
 	case "make:model":
 		forge.MakeModel(name)
 	case "make:migration":

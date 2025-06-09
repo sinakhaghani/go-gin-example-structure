@@ -7,7 +7,7 @@ import (
 	"text/template"
 )
 
-func MakeValidator(path string) {
+func MakeValidation(path string) {
 	dir := "app/validations"
 	filePath := fmt.Sprintf("%s/%s.go", dir, path)
 	fullDir := filepath.Dir(filePath)

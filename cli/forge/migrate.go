@@ -12,12 +12,12 @@ func MakeMigration(name string) {
 	dir := "database/migrations"
 	versionFile := filepath.Join(dir, ".migration_version")
 
-	// ساخت مسیر اگر وجود ندارد
+	//Create path if it doesn't exist
 	if _, err := os.Stat(dir); os.IsNotExist(err) {
 		os.MkdirAll(dir, os.ModePerm)
 	}
 
-	// خواندن نسخه فعلی
+	//Read the current version
 	version := 1
 	if data, err := os.ReadFile(versionFile); err == nil {
 		v, err := strconv.Atoi(strings.TrimSpace(string(data)))
@@ -26,10 +26,10 @@ func MakeMigration(name string) {
 		}
 	}
 
-	// ذخیره نسخه جدید
+	//Save new version
 	os.WriteFile(versionFile, []byte(strconv.Itoa(version)), 0644)
 
-	// ساخت نام فایل
+	//Creating a file name
 	paddedVersion := fmt.Sprintf("%06d", version)
 	snakeName := toSnakeCase(name)
 

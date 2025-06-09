@@ -1,9 +1,9 @@
 package container
 
 import (
+	userController "go-gin-example-structure/app/controllers"
+	"go-gin-example-structure/app/repositories"
 	"go-gin-example-structure/config"
-	userController "go-gin-example-structure/src/controllers"
-	"go-gin-example-structure/src/repositories"
 )
 
 type Container struct {

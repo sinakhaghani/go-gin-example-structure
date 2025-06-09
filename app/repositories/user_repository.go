@@ -3,8 +3,8 @@ package repositories
 import (
 	"gorm.io/gorm"
 
-	"go-gin-example-structure/src/models"
-	"go-gin-example-structure/src/validators"
+	"go-gin-example-structure/app/models"
+	"go-gin-example-structure/app/validators"
 	"golang.org/x/crypto/bcrypt"
 )
 

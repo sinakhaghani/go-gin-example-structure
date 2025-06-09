@@ -2,9 +2,9 @@ package routes
 
 import (
 	"github.com/gin-gonic/gin"
-	"go-gin-example-structure/src/common/container"
-	"go-gin-example-structure/src/controllers"
-	"go-gin-example-structure/src/middlewares"
+	"go-gin-example-structure/app/common/container"
+	"go-gin-example-structure/app/controllers"
+	"go-gin-example-structure/app/middlewares"
 )
 
 func RegisterRoutes(r *gin.Engine) {

@@ -2,10 +2,10 @@ package controllers
 
 import (
 	"github.com/gin-gonic/gin"
-	"go-gin-example-structure/src/validators"
+	"go-gin-example-structure/app/validators"
 
-	"go-gin-example-structure/src/common/utils/i18n"
-	"go-gin-example-structure/src/repositories"
+	"go-gin-example-structure/app/common/utils/i18n"
+	"go-gin-example-structure/app/repositories"
 	"net/http"
 )
 

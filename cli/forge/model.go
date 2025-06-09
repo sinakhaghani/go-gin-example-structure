@@ -8,7 +8,7 @@ import (
 )
 
 func MakeModel(path string) {
-	dir := "src/models"
+	dir := "app/models"
 	filePath := fmt.Sprintf("%s/%s.go", dir, path)
 	fullDir := filepath.Dir(filePath)
 

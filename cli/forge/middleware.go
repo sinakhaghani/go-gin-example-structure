@@ -8,7 +8,7 @@ import (
 )
 
 func MakeMiddleware(path string) {
-	dir := "src/middlewares"
+	dir := "app/middlewares"
 	filePath := fmt.Sprintf("%s/%s.go", dir, path)
 	fullDir := filepath.Dir(filePath)
 

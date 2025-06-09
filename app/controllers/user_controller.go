@@ -36,7 +36,7 @@ func (r *UserController) GetUsers(c *gin.Context) {
 		c.JSON(http.StatusOK, gin.H{"message": err.Error()})
 	}
 
-	message := i18n.Translate(c, "UsersList", "User list") // from translation src/common/utils/i18n
+	message := i18n.Translate(c, "UsersList", "User list") // from translation app/common/utils/i18n
 
 	c.JSON(http.StatusOK, gin.H{
 		"message": message,

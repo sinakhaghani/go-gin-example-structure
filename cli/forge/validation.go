@@ -8,7 +8,7 @@ import (
 )
 
 func MakeValidator(path string) {
-	dir := "src/validators"
+	dir := "app/validations"
 	filePath := fmt.Sprintf("%s/%s.go", dir, path)
 	fullDir := filepath.Dir(filePath)
 
@@ -17,13 +17,13 @@ func MakeValidator(path string) {
 	}
 
 	if _, err := os.Stat(filePath); err == nil {
-		fmt.Println("validator already exists.")
+		fmt.Println("validation already exists.")
 		return
 	}
 
 	fileName := filepath.Base(path)
 
-	tmpl := `package validators
+	tmpl := `package validations
 
 
 type ExampleInput struct {}`
@@ -31,10 +31,10 @@ type ExampleInput struct {}`
 	f, _ := os.Create(filePath)
 	defer f.Close()
 
-	t := template.Must(template.New("validator").Parse(tmpl))
+	t := template.Must(template.New("validation").Parse(tmpl))
 	t.Execute(f, map[string]string{
 		"FuncName": ToCamelCase(fileName),
 	})
 
-	fmt.Println("validator created:", filePath)
+	fmt.Println("validation created:", filePath)
 }

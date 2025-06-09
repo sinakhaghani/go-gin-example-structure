@@ -9,7 +9,7 @@ import (
 )
 
 func MakeController(path string) {
-	dir := "src/controllers"
+	dir := "app/controllers"
 	filePath := fmt.Sprintf("%s/%s.go", dir, path)
 	fullDir := filepath.Dir(filePath)
 

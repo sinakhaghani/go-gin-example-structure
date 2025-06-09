@@ -4,7 +4,7 @@ import (
 	"github.com/gin-gonic/gin"
 	"github.com/gin-gonic/gin/binding"
 	"github.com/go-playground/validator/v10"
-	customValidator "hotel_guest/src/common/validators"
+	customValidator "hotel_guest/app/common/validators"
 
 	"hotel_guest/config"
 	"hotel_guest/routes"

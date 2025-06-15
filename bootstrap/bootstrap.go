@@ -4,13 +4,13 @@ import (
 	"github.com/gin-gonic/gin"
 	"github.com/gin-gonic/gin/binding"
 	"github.com/go-playground/validator/v10"
-	customValidator "hotel_guest/app/common/validators"
+	customValidator "go-gin-example-structure/app/common/validators"
 
-	"hotel_guest/config"
-	"hotel_guest/routes"
+	"go-gin-example-structure/config"
+	"go-gin-example-structure/routes"
 )
 
-func SetupRouter() *gin.Engine {
+func SetupApp() *gin.Engine {
 	config.InitI18n()
 	config.InitDatabase()
 

@@ -5,6 +5,6 @@ import (
 )
 
 func main() {
-	r := bootstrap.SetupRouter()
+	r := bootstrap.SetupApp()
 	r.Run(":8080")
 }

@@ -22,6 +22,11 @@ func SetupApp() *gin.Engine {
 		if err != nil {
 			return nil
 		}
+
+		err = v.RegisterValidation("unique", customValidator.UniqueIn)
+		if err != nil {
+			return nil
+		}
 	}
 
 	r := gin.Default()
